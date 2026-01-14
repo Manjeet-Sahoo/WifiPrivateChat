@@ -1,0 +1,163 @@
+/* --------- Global Styles --------- */
+* {
+  box-sizing: border-box;           /* Include padding and border in total element width/height */
+  font-family: "Poppins", sans-serif; /* Apply clean modern font globally */
+  margin: 0;                        /* Remove default browser margin */
+  padding: 0;                       /* Remove default browser padding */
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); /* Smooth pink gradient background */
+  height: 100vh;                      /* Full viewport height */
+  display: flex;                      /* Center the chat container horizontally & vertically */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;                   /* Prevent scrolling outside chat box */
+}
+
+/* --------- Chat Container --------- */
+.chat-container {
+  width: 400px;                       /* Fixed width for chat window */
+  height: 600px;                      /* Fixed height for chat window */
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent glass-like background */
+  border-radius: 20px;                /* Rounded corners */
+  backdrop-filter: blur(15px);        /* Apply glassmorphism blur effect */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  padding: 20px;                      /* Inner spacing */
+  display: flex;                      /* Use flexbox for layout */
+  flex-direction: column;             /* Stack items vertically */
+  animation: fadeIn 0.8s ease;        /* Smooth fade-in animation on load */
+}
+
+.chat-container h2 {
+  text-align: center;                 /* Center the heading text */
+  color: white;                       /* White heading text */
+  margin-bottom: 10px;                /* Space below the heading */
+  letter-spacing: 1px;                /* Slight letter spacing for elegance */
+}
+
+/* --------- Chat Box --------- */
+.chat-box {
+  flex: 1;                            /* Take up all available vertical space */
+  overflow-y: auto;                   /* Enable scrolling when messages overflow */
+  background: rgba(255, 255, 255, 0.1); /* Slightly transparent area for messages */
+  border-radius: 15px;                /* Rounded corners inside chat area */
+  padding: 10px;                      /* Inner padding */
+  scrollbar-width: thin;              /* Thinner scrollbar for Firefox */
+  scrollbar-color: #f8a5c2 transparent; /* Scroll thumb color for Firefox */
+}
+
+/* Scrollbar styling for Chrome/Safari */
+.chat-box::-webkit-scrollbar {
+  width: 8px;                         /* Narrow scrollbar */
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #ffb6b9;          /* Pink scrollbar thumb */
+  border-radius: 8px;                 /* Rounded scroll thumb */
+}
+
+/* --------- Messages --------- */
+.message {
+  margin: 8px 0;                      /* Space between messages */
+  max-width: 80%;                     /* Prevent messages from being too wide */
+  padding: 10px 15px;                 /* Space inside each message bubble */
+  border-radius: 15px;                /* Rounded message bubble shape */
+  line-height: 1.4;                   /* Better readability */
+  word-wrap: break-word;              /* Break long words to next line */
+  animation: slideIn 0.3s ease;       /* Animate messages when they appear */
+}
+
+/* Message bubble for the current user */
+.message.user {
+  background: linear-gradient(135deg, #84fab0, #8fd3f4); /* Green-blue gradient */
+  align-self: flex-end;               /* Align message to right side */
+  border-bottom-right-radius: 3px;    /* Sharper corner on bottom-right */
+  color: #222;                        /* Dark text for readability */
+}
+
+/* Message bubble for the other person */
+.message.other {
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* Pink-blue gradient */
+  align-self: flex-start;             /* Align message to left side */
+  border-bottom-left-radius: 3px;     /* Sharper corner on bottom-left */
+  color: #222;                        /* Dark text color */
+}
+
+/* --------- Input Form --------- */
+#chatForm {
+  display: flex;                      /* Align input and button in one row */
+  align-items: center;                /* Vertically center them */
+  margin-top: 10px;                   /* Space above input box */
+  background: rgba(255, 255, 255, 0.2); /* Transparent white background */
+  border-radius: 15px;                /* Rounded edges */
+  padding: 8px;                       /* Inner padding */
+}
+
+#messageInput {
+  flex: 1;                            /* Take up available space */
+  border: none;                       /* Remove border */
+  outline: none;                      /* Remove focus outline */
+  background: transparent;            /* Transparent background */
+  color: white;                       /* White input text */
+  padding: 8px 10px;                  /* Inner space for text */
+  font-size: 16px;                    /* Comfortable font size */
+}
+
+#messageInput::placeholder {
+  color: #f9e3f3;                     /* Light pink placeholder text */
+  opacity: 0.8;                       /* Slightly transparent placeholder */
+}
+
+/* --------- Send Button --------- */
+button {
+  background: linear-gradient(135deg, #f5576c, #f093fb); /* Pink-purple gradient button */
+  border: none;                       /* No border */
+  color: white;                       /* White text */
+  padding: 10px 15px;                 /* Padding for comfortable click area */
+  border-radius: 12px;                /* Rounded button shape */
+  cursor: pointer;                    /* Show pointer cursor */
+  font-size: 15px;                    /* Medium text size */
+  font-weight: 600;                   /* Slightly bold font */
+  transition: 0.2s;                   /* Smooth hover animation */
+}
+
+/* Button hover effect */
+button:hover {
+  transform: scale(1.1);              /* Slightly enlarge on hover */
+  box-shadow: 0 0 10px rgba(255, 200, 230, 0.8); /* Soft glow effect */
+}
+
+/* --------- Emoji Suggestions --------- */
+.emoji-suggestions {
+  display: flex;                      /* Arrange emojis in a flexible row */
+  flex-wrap: wrap;                    /* Allow wrapping to next line */
+  gap: 6px;                           /* Space between emojis */
+  margin: 8px 0;                      /* Space above and below emoji bar */
+  justify-content: center;            /* Center emojis horizontally */
+}
+
+/* Individual emoji style */
+.emoji {
+  font-size: 20px;                    /* Emoji size */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  transition: transform 0.2s;         /* Smooth scaling effect */
+}
+
+/* Emoji hover animation */
+.emoji:hover {
+  transform: scale(1.3);              /* Slightly enlarge when hovered */
+}
+
+/* --------- Animations --------- */
+/* Fade-in effect for the entire chat container */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }  /* Start invisible and slightly below */
+  to { opacity: 1; transform: translateY(0); }       /* Fade in and move up */
+}
+
+/* Slide-in effect for messages */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }  /* Start faded and below */
+  to { opacity: 1; transform: translateY(0); }       /* Slide upward into place */
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Chatroom</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div class="chat-container">
+    <h2>Chat platform</h2>
+    <h7>Peoples present here are actually present here in class now...</h7>
+    <h9>Cello-tape</h9>
+    <div id="chatBox" class="chat-box"></div>
+     <div class="emoji-suggestions">
+  <span class="emoji">😊</span>
+  <span class="emoji">😂</span>
+  <span class="emoji">😍</span>
+  <span class="emoji">😘</span>
+  <span class="emoji">❤️</span>
+  <span class="emoji">🔥</span>
+  <span class="emoji">💋</span>
+  <span class="emoji">😎</span>
+  <span class="emoji">💫</span>
+</div>
+
+    <form id="chatForm">
+      <input id="messageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
